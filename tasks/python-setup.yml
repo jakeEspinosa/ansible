@@ -1,0 +1,14 @@
+- name: Install pipenv dependencies
+  apt: 
+    name: [ "python3-pip", "virtualenv" ]
+  tags:
+    - install
+    - python
+
+- name: Install pipenv
+  pip:
+    name: pipenv
+  tags:
+    - install
+    - python
+  
