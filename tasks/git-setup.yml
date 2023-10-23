@@ -1,0 +1,21 @@
+- name: Git setup email
+  git_config:
+    name: user.email
+    scope: global
+    value: "jacob.sa.espinosa@gmail.com"
+  tags:
+  - git-personal
+
+- name: Git setup name
+  git_config:
+    name: user.name
+    scope: global
+    value: "Jake Espinosa"
+  tags:
+  - git-personal
+
+- name: Git setup editor
+  git_config:
+    name: core.editor
+    scope: global
+    value: "code --wait"
