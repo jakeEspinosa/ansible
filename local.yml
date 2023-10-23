@@ -7,21 +7,5 @@
     changed_when: False
 
   tasks:
-  - name: Install nodejs and npm
-    apt:
-      name: ["nodejs", "npm"]
-    tags:
-      - install
-      - node
-  - name: Install N
-    npm:
-      name: n
-      global: yes
-    tags:
-      - install
-      - node
-  - name: Install correct version of Node
-    shell: n 18
-    tags:
-      - install
-      - node
+  - include: tasks/git-setup.yml
+  - include: tasks/node-setup.yml
