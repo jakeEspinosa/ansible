@@ -4,7 +4,8 @@ I made this repo to automate setting up a WSL instance.
 **ALWAYS** review arbitrary code before running it on your system.
 
 ## Tasks
-- Configure git
+- Configure ssh certs
+- Configure dotfiles
 - Install node v18 and npm
 - Install python toolchain
 
