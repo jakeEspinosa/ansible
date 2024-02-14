@@ -11,6 +11,7 @@
 
   tasks:
   - include: tasks/config-ssh.yml
+  - include: tasks/dotfiles.yml
   - include: tasks/node-setup.yml
   - include: tasks/python-setup.yml
   
