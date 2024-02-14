@@ -1,4 +1,7 @@
 - hosts: localhost
+  vars:
+    source_key: "./.ssh/id_rsa"
+    dest_key: "{{ lookup('env', 'HOME') }}/.ssh"
   become: true
 
   pre_tasks:
@@ -7,7 +10,7 @@
     changed_when: False
 
   tasks:
-  - include: tasks/git-setup.yml
+  - include: tasks/config-ssh.yml
   - include: tasks/node-setup.yml
   - include: tasks/python-setup.yml
   
