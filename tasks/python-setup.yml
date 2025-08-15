@@ -1,6 +1,11 @@
+- name: "Fetch uv"
+  ansible.builtin.get_url:
+    url: "https://astral.sh/uv/install.sh"
+    dest: "/tmp/install.sh"
+    mode: "0755"
+
 - name: "Install uv via bash"
-  ansible.builtin.shell:
-    cmd: "curl -LsSf https://astral.sh/uv/install.sh | env UV_INSTALL_DIR='/usr/local/bin' sh"
+  ansible.builtin.shell: "/tmp/install.sh"
 
 - name: "Update uv"
   ansible.builtin.shell:

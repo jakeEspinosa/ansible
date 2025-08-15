@@ -20,3 +20,10 @@
   tags:
     - install
     - dotfiles
+
+- name: Reload .bashrc
+  ansible.builtin.shell:
+    cmd: ". ~/.bashrc"
+  tags:
+    - install
+    - dotfiles
