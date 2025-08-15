@@ -9,9 +9,7 @@
 
 - name: "Update uv"
   ansible.builtin.shell:
-    cmd: "uv self update"
-  environment:
-    PATH: "/usr/local/bin:{{ ansible_env.PATH }}"
+    cmd: "$HOME/.local/bin/uv self update"
   tags:
     - install
     - python

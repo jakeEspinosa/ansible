@@ -1,12 +1,12 @@
-- name: Install stow
+- name: "Install stow"
   apt: name=stow
   tags:
     - install
     - dotfiles
 
-- name: Cloning .dotfiles
+- name: "Clone .dotfiles"
   ansible.builtin.git:
-    repo: 'git@github.com:jakeEspinosa/.dotfiles.git'
+    repo: "git@github.com:jakeEspinosa/.dotfiles.git"
     dest: "{{ lookup('env', 'HOME') }}/.dotfiles"
     accept_hostkey: yes
     update: yes
@@ -15,15 +15,15 @@
     - install
     - dotfiles
 
-- name: Stow dotfiles
-  shell: cd $HOME/.dotfiles && stow git
+- name: "Backup .bashrc"
+  ansible.builtin.shell:
+    cmd: "cd $HOME && mv $HOME/.bashrc $HOME/.bashrc.backup"
   tags:
     - install
     - dotfiles
 
-- name: Reload .bashrc
-  ansible.builtin.shell:
-    cmd: ". ~/.bashrc"
+- name: "Stow dotfiles"
+  ansible.builtin.shell: "cd $HOME/.dotfiles && stow bash git node-version tmux"
   tags:
     - install
     - dotfiles
