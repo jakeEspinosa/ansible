@@ -1,14 +1,12 @@
-- name: Install pipenv dependencies
-  apt: 
-    name: [ "python3-pip", "virtualenv" ]
-  tags:
-    - install
-    - python
+- name: "Install uv via bash"
+  ansible.builtin.shell:
+    cmd: "curl -LsSf https://astral.sh/uv/install.sh | env UV_INSTALL_DIR='/usr/local/bin' sh"
 
-- name: Install pipenv
-  pip:
-    name: pipenv
+- name: "Update uv"
+  ansible.builtin.shell:
+    cmd: "uv self update"
+  environment:
+    PATH: "/usr/local/bin:{{ ansible_env.PATH }}"
   tags:
     - install
     - python
-  
