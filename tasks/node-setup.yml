@@ -1,18 +1,29 @@
-- name: Install nodejs and npm
-  apt:
-    name: ["nodejs", "npm"]
+- name: "Install fnm deps"
+  ansible.builtin.apt:
+    name: ["curl", "unzip"]
   tags:
-    - install
-    - node
-- name: Install N
-  npm:
-    name: n
-    global: yes
+  - install
+  - node
+
+- name: "Fetch fnm"
+  ansible.builtin.get_url:
+    url: "https://fnm.vercel.app/install"
+    dest: "/tmp/install"
+    mode: "0755"
   tags:
-    - install
-    - node
-- name: Install correct version of Node
-  shell: n 18
+  - install
+  - node
+
+- name: "Install fnm via bash"
+  ansible.builtin.shell: "/tmp/install"
   tags:
-    - install
-    - node
+  - install
+  - node
+
+- name: "Install nodejs and npm"
+  ansible.builtin.shell:
+    chdir: "$HOME"
+    cmd: "$HOME/.local/share/fnm/fnm install"
+  tags:
+  - install
+  - node
