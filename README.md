@@ -9,8 +9,8 @@ I made this repo to automate setting up a WSL instance.
 ## Tasks
 - Configure ssh certs
 - Configure dotfiles
-- Install node v18 and npm
-- Install python toolchain
+- Install fnm for node
+- Install uv for python
 
 ## Dependencies
 - software-properties-common
